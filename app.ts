@@ -23,14 +23,14 @@ Bun.serve({
       }
       const parsed = JSON.parse(decrypted);
       if (parsed.event === 'new-donation') {
-        console.log('NEW DONATION!!!!' + parsed.data);
+        console.log('NEW DONATION!!!!');
 
         const embed = {
           "content": null,
           "embeds": [
             {
               "title": "New Donation!!!!",
-              "description": `**Amount**: **$${parsed.data.amount / 100}**\n**Private**: nah\n**email**: ${parsed.data.donor_email}\n\n\"*${parsed.data.transaction_message}*"`,
+              "description": `**Amount**: **$${parsed.data.amount / 100}**\n**email**: ${parsed.data.donor_email}\n\n\"*${parsed.data.transaction_message}*"`,
               "color": 6611
             }
           ],
