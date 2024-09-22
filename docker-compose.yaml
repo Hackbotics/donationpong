@@ -1,0 +1,25 @@
+services:
+  hcbthing:
+    image: nat3z/hcbthing
+    environment:
+      - HCB_AUTH_TOKEN=your_auth_token # Find it with this script: https://github.com/Nat3z/innerhcb
+      - HCB_ORGANIZATION_ID=your_organization_id # Go to your organization and get it here: https://hcb.hackclub.com/{ORG_ID}
+      - HCBTHING_SECRET=your_secret_thing # Choose a super secret password for HCB to encrypt responses with
+      - HCBTHING_WEBHOOK=http://localhost:3000/hcbthing # The webhook used to consume HCBThing responses.
+    networks:
+      - hcbthing
+  
+  webhook:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DISCORD_WEBHOOK=your_discord_webhook # Create a webhook in your Discord server and paste it here
+      - HCBTHING_SECRET=your_secret_thing # The same secret password you used for HCBTHING_SECRET
+    networks:
+      - hcbthing
+
+networks:
+  hcbthing:
+    driver: bridge
+
