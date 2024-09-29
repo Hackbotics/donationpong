@@ -1,6 +1,6 @@
 services:
   hcbthing:
-    image: nat3z/hcbthing
+    image: nat3z/hcbthing:latest
     environment:
       - HCB_AUTH_TOKEN=your_auth_token # Find it with this script: https://github.com/Nat3z/innerhcb
       - HCB_ORGANIZATION_ID=your_organization_id # Go to your organization and get it here: https://hcb.hackclub.com/{ORG_ID}
